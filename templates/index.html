@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Météo Raspberry Pi - Temps Réel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		
+
+<!-- Fontawesome -->
+ <script src="https://kit.fontawesome.com/dcef3565c8.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../static/style.css">
+    <script defer src="../static/script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dataLive">
+        <div id="dataLiveHeader">
+
+            <h1>Weather station <span id="live">live</span></h1>
+        </div>
+        <div id="dataLiveBody">
+            <div id="temperature">
+                <h3>Temperature</h3>
+                <div class="valueTemp"><span id="temp">--</span> °C</div>
+            </div>
+            
+            <div id="otherData">
+                <div class="card">
+                    <h3>Humidity</h3>
+                    <div class="value"><span id="hum">--</span> %</div>
+                </div>
+
+                <div class="card">
+                    <h3>Pressure</h3>
+                    <div class="value"><span id="pres">--</span> mbar</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="iRound hidden">
+        <i class="fa-solid fa-arrow-left"></i>
+    </div>
+
+    <div class="iRound hidden">
+            <i class="fa-solid fa-arrow-right"></i>
+    </div>
+
+    <div id="arrowHome">
+        <span id="seeStats">See stats</span>
+        <div class="iRound">
+            <i class="fa-solid fa-arrow-right"></i>
+        </div>
+    </div>
+
+
+    <div class="statDisplay hidden" id="statTemp">
+        <h2>Temperature (<span id="tempStat">--</span> °C)</h2>
+        <canvas id="tempChart"></canvas>
+    </div>
+
+    <div class="statDisplay hidden" id="statHumidity">
+        <h2>Humidity (<span id="humStat">--</span> %)</h2>
+        <canvas id="humChart"></canvas>
+    </div>
+
+    <div class="statDisplay hidden" id="statPressure">
+        <h2>Pressure (<span id="presStat">--</span> mbar)</h2>
+        <canvas id="presChart"></canvas>
+    </div>
+
+
+
+    
+
+</body>
+</html>
