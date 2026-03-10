@@ -85,23 +85,124 @@
 // updateSensorData();
 
 
-const arrowHome = document.getElementById('arrowHome');
+const arrowSeeStats = document.getElementById('arrowSeeStats');
 const statTemp = document.getElementById('statTemp');
+const statHumidity = document.getElementById('statHumidity');
+const statPressure = document.getElementById('statPressure');
 const dataLive = document.getElementsByClassName('dataLive')[0];
-const arrowHomeChildren = arrowHome.children;
+const arrowSeeStatsChildren = arrowSeeStats.children;
+const arrowLeft = document.getElementById('arrowLeft');
+const arrowRight = document.getElementById('arrowRight');
+const arrowHome = document.getElementById('arrowHome');
+const seeStats = document.getElementById('seeStats');
 const iRound = document.getElementsByClassName('iRound');
 
+let clicks = 0;
 
 
-arrowHome.addEventListener('click', (e) => {
-  arrowHome.classList.add('hidden');
-  
-  statTemp.classList.remove('hidden');
-  dataLive.classList.add('hidden');
+for (let i of iRound) {
+  if (i === arrowHome || i === arrowRight)
+    i.addEventListener('click', clickAdd);
 
-  for (child of arrowHomeChildren) {
-    child.classList.add('hidden');
+  if (i === arrowLeft)
+    i.addEventListener('click', clickRemove);
+}
+
+function clickAdd() {
+  clicks++;
+}
+
+function clickRemove() {
+  clicks--;
+}
+
+for (const i of iRound) {
+  i.addEventListener('click', display);
+}
+
+function display() {
+  switch (clicks) {
+    case 0:
+      homeDisplay();
+      break;
+    case 1:
+      temperatureDisplay();
+      break;
+    case 2:
+      humidityDisplay();
+      break;
+    case 3:
+      pressureDisplay();
+      break;
   }
-  
+}
 
-})
+function homeDisplay() {
+  dataLive.classList.remove("hidden");
+
+  for (const child of arrowSeeStatsChildren) {
+    child.classList.remove("hidden");
+  }
+  statHumidity.classList.add("hidden");
+  statTemp.classList.add("hidden");
+  statPressure.classList.add("hidden");
+  arrowLeft.classList.add("hidden");
+  arrowRight.classList.add("hidden");
+
+
+}
+
+function temperatureDisplay() {
+
+  statTemp.classList.remove("hidden");
+  arrowLeft.classList.remove("hidden");
+  arrowRight.classList.remove("hidden");
+  statHumidity.classList.add("hidden");
+  dataLive.classList.add("hidden");
+  statPressure.classList.add("hidden");
+  arrowSeeStats.classList.add("hidden");
+  for (const child of arrowSeeStatsChildren) {
+    child.classList.add("hidden");
+  }
+
+
+}
+
+function humidityDisplay() {
+
+  statHumidity.classList.remove("hidden");
+  arrowLeft.classList.remove("hidden");
+  arrowRight.classList.remove("hidden");
+  statTemp.classList.add("hidden");
+  dataLive.classList.add("hidden");
+  statPressure.classList.add("hidden");
+  for (const child of arrowSeeStatsChildren) {
+    child.classList.add("hidden");
+  }
+}
+
+function pressureDisplay() {
+
+  statPressure.classList.remove("hidden");
+  arrowLeft.classList.remove("hidden");
+  arrowRight.classList.remove("hidden");
+  statTemp.classList.add("hidden");
+  dataLive.classList.add("hidden");
+  statHumidity.classList.add("hidden");
+  arrowRight.classList.add("hidden");
+  for (const child of arrowSeeStatsChildren) {
+    child.classList.add("hidden");
+  }
+}
+
+window.addEventListener("load", () => {
+  seeStats.classList.add("bounce");
+});
+
+seeStats.addEventListener('mouseenter', () => {
+  seeStats.classList.remove('bounce');
+});
+
+seeStats.addEventListener('mouseleave', () => {
+  seeStats.classList.add('bounce');
+});
