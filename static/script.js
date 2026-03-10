@@ -96,11 +96,27 @@ const arrowRight = document.getElementById('arrowRight');
 const arrowHome = document.getElementById('arrowHome');
 const seeStats = document.getElementById('seeStats');
 const iRound = document.getElementsByClassName('iRound');
+const date = document.getElementById('date');
+
+let newDate = new Date();
+ 
+
+let formattedDate = newDate.toLocaleDateString("fr-FR", {
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+  year: "numeric"
+});
+
+formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+
+date.textContent = formattedDate;
+
 
 let clicks = 0;
 
 
-for (let i of iRound) {
+for (const i of iRound) {
   if (i === arrowHome || i === arrowRight)
     i.addEventListener('click', clickAdd);
 

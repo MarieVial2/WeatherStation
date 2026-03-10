@@ -13,7 +13,7 @@ body {
 }
 
 .dataLive {
-    background-color: rgba(240, 240, 240, 0.5);
+    background-color: rgba(240, 240, 240, 0.331);
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(189, 189, 189, 0.5) ;
     /* padding : 30px; */
@@ -21,13 +21,19 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    backdrop-filter: blur(10px);   
 }
 
 .valueTemp {
-    font-size: 3rem;
-    text-shadow: 1px 1px 2px rgba(126, 126, 126, 0.829);
+    font-size: 3.2rem;
+    text-shadow: 2px 2px 2px rgba(126, 126, 126, 0.925);
     
+}
+
+.value {
+    font-size: 1rem;
+    text-shadow: 2px 2px 2px rgba(126, 126, 126, 0.925);
+    font-weight: 400;
 }
 
 
@@ -56,6 +62,11 @@ font-family: "Raleway", 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-family: "Nothing You Could Do", 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+#date {
+    margin-top : 10px;
+    font-weight: 400;
+}
+
 #temperature {
     display : flex;
     flex-direction: column;
@@ -65,12 +76,15 @@ font-family: "Raleway", 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border: 1px solid rgba(148, 148, 148, 0.50);
     border-radius: 10px;
     margin : 20px;
-    background-color: rgba(255, 255, 255, 0.76);
+    background-color: rgba(255, 255, 255, 0.288);
+    backdrop-filter: blur(10px);  
+    width : 70%;
 }
 
 #dataLiveBody {
     display : flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #otherData {
@@ -81,6 +95,7 @@ font-family: "Raleway", 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 #dataLiveBody h3 {
     font-size: 1.2rem;
     font-weight: 200;
+    margin-top : 0;
 }
 
 .card {
@@ -91,8 +106,9 @@ font-family: "Raleway", 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding : 25px;
     border: 1px solid rgba(148, 148, 148, 0.50);
     border-radius: 10px;
-    margin : 20px;
-    background-color: rgba(255, 255, 255, 0.76);
+    margin : 0 20px 20px 20px;
+    background-color: rgba(255, 255, 255, 0.313);
+    backdrop-filter: blur(10px);  
     
 }
 
@@ -111,7 +127,8 @@ font-family: "Raleway", 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.76);
+    background-color: rgba(255, 255, 255, 0.329);
+    backdrop-filter: blur(10px);  
     }
 
 .dataHeader h2 {
