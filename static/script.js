@@ -101,14 +101,12 @@ const date = document.getElementById('date');
 let newDate = new Date();
  
 
-let formattedDate = newDate.toLocaleDateString("fr-FR", {
+let formattedDate = newDate.toLocaleDateString("en-EN", {
   weekday: "long",
   day: "numeric",
   month: "long",
   year: "numeric"
 });
-
-formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
 
 date.textContent = formattedDate;
 
@@ -149,6 +147,9 @@ function display() {
       break;
     case 3:
       pressureDisplay();
+      break;
+    default:
+      console.log("Erreur sur la variable clicks");
       break;
   }
 }
