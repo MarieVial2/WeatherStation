@@ -1,88 +1,93 @@
-// // Nombre de points maximum affichés en même temps sur le graphe
-// const maxDataPoints = 10;
+ // Nombre de points maximum affichés en même temps sur le graphe
+ const maxDataPoints = 10;
+ 
 
-// // Fonction générique pour configurer un graphique
-// function createChart(ctx, label, color) {
-//   return new Chart(ctx, {
-//     type: "line",
-//     data: {
-//       labels: [],
-//       datasets: [
-//         {
-//           label: label,
-//           data: [],
-//           borderColor: color,
-//           backgroundColor: color,
-//           borderWidth: 2,
-//           tension: 0.3,
-//           pointRadius: 2,
-//         },
-//       ],
-//     },
-//     options: {
-//       responsive: true,
-//       animation: false,
-//       scales: {
-//         x: { display: true },
-//         y: { display: true },
-//       },
-//     },
-//   });
-// }
 
-// const tempChart = createChart(
-//   document.getElementById("tempChart").getContext("2d"),
-//   "Température (°C)",
-//   "rgba(255, 99, 132, 1)",
-// );
-// const humChart = createChart(
-//   document.getElementById("humChart").getContext("2d"),
-//   "Humidité (%)",
-//   "rgba(54, 162, 235, 1)",
-// );
-// const presChart = createChart(
-//   document.getElementById("presChart").getContext("2d"),
-//   "Pression (mbar)",
-//   "rgba(75, 192, 192, 1)",
-// );
+ // Fonction générique pour configurer un graphique
+ function createChart(ctx, label, color) {
+   return new Chart(ctx, {
+     type: "line",
+     data: {
+       labels: [],
+       datasets: [
+         {
+           label: label,
+           data: [],
+           borderColor: color,
+           backgroundColor: color,
+           borderWidth: 2,
+           tension: 0.3,
+           pointRadius: 2,
+         },
+       ],
+     },
+     options: {
+       responsive: true,
+       animation: false,
+       scales: {
+         x: { display: true },
+         y: { display: true },
+       },
+     },
+   });
+ }
 
-// function addDataToChart(chart, timeLabel, newValue) {
-//   chart.data.labels.push(timeLabel);
-//   chart.data.datasets[0].data.push(newValue);
+ const tempChart = createChart(
+   document.getElementById("tempChart").getContext("2d"),
+   "Température (°C)",
+   "rgba(255, 99, 132, 1)",
+ );
+ const humChart = createChart(
+   document.getElementById("humChart").getContext("2d"),
+   "Humidité (%)",
+   "rgba(54, 162, 235, 1)",
+ );
+ const presChart = createChart(
+   document.getElementById("presChart").getContext("2d"),
+   "Pression (mbar)",
+   "rgba(75, 192, 192, 1)",
+ );
 
-//   if (chart.data.labels.length > maxDataPoints) {
-//     chart.data.labels.shift();
-//     chart.data.datasets[0].data.shift();
-//   }
-//   chart.update();
-// }
+ function addDataToChart(chart, timeLabel, newValue) {
+   chart.data.labels.push(timeLabel);
+   chart.data.datasets[0].data.push(newValue);
 
-// function updateSensorData() {
-//   fetch("/api/data")
-//     .then((response) => response.json())
-//     .then((data) => {
-//       document.getElementById("temp").innerText = data.temperature;
-//       document.getElementById("hum").innerText = data.humidity;
-//       document.getElementById("pres").innerText = data.pressure;
+   if (chart.data.labels.length > maxDataPoints) {
+     chart.data.labels.shift();
+     chart.data.datasets[0].data.shift();
+   }
+   chart.update();
+ }
 
-//       const now = new Date();
-//       const timeString =
-//         String(now.getHours()).padStart(2, "0") +
-//         ":" +
-//         String(now.getMinutes()).padStart(2, "0") +
-//         ":" +
-//         String(now.getSeconds()).padStart(2, "0");
+ function updateSensorData() {
+   fetch("/api/data")
+     .then((response) => response.json())
+     .then((data) => {
+       document.getElementById("temp").innerText = data.temperature;
+       document.getElementById("hum").innerText = data.humidity;
+       document.getElementById("pres").innerText = data.pressure;
+       document.getElementById("tempStat").innerText = data.temperature;
+       document.getElementById("humStat").innerText = data.humidity;
+       document.getElementById("presStat").innerText = data.pressure;
 
-//       addDataToChart(tempChart, timeString, data.temperature);
-//       addDataToChart(humChart, timeString, data.humidity);
-//       addDataToChart(presChart, timeString, data.pressure);
-//     })
-//     .catch((error) => console.error("Erreur:", error));
-// }
+       const now = new Date();
+       const timeString =
+         String(now.getHours()).padStart(2, "0") +
+         ":" +
+         String(now.getMinutes()).padStart(2, "0") +
+         ":" +
+         String(now.getSeconds()).padStart(2, "0");
 
-// setInterval(updateSensorData, 2000);
+       addDataToChart(tempChart, timeString, data.temperature);
+       addDataToChart(humChart, timeString, data.humidity);
+       addDataToChart(presChart, timeString, data.pressure);
+     })
+     .catch((error) => console.error("Erreur:", error));
+ }
 
-// updateSensorData();
+ setInterval(updateSensorData, 2000);
+
+ updateSensorData();
 
 
 const arrowSeeStats = document.getElementById('arrowSeeStats');
@@ -168,6 +173,8 @@ function homeDisplay() {
 
 
 }
+
+ console.log("test");
 
 function temperatureDisplay() {
 

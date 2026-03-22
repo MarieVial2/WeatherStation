@@ -18,14 +18,12 @@
     <script src="https://kit.fontawesome.com/dcef3565c8.js" crossorigin="anonymous"></script>
 
     <!-- Feuilles de style -->
-    <link rel="stylesheet" href="../static/style.css">
-    <link rel="stylesheet" media="screen and (max-width: 768px)" href="../static/style-768.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="{{ url_for('static', filename='style-768.css')}}" />
 
-
-    <script defer src="../static/script.js"></script>
 
     <!-- Chart.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -100,7 +98,7 @@
 
 
 
-
+    <script src="{{ url_for('static', filename='script.js')}}"></script>
 
 </body>
 
